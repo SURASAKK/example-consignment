@@ -16,7 +16,6 @@ export class Footer extends React.Component<{ style?: CSSProperties }> {
     public render() {
         return (
             <FooterDiv style={this.props.style}>
-                <Divider inverted />
                 <Divider horizontal inverted>
                     test 0.1.0
                 </Divider>

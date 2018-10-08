@@ -15,7 +15,11 @@ export class Header extends React.Component<Props, State> {
     }
     public render() {
         return (
-            <div></div>
+            <div>
+                <Menu inverted color="blue" secondary icon="labeled">
+                    <Menu.Item header name="test" />
+                </Menu>
+            </div>
         )
     }
 }
