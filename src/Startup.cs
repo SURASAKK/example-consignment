@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Consignment.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Consignment
 {
@@ -25,12 +27,22 @@ namespace Consignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var ConnectionString = "Server=192.168.0.105;Port=5432;Database=ConsignmntTest;User Id=tfo;Password=abcABC123;";
+            services.AddDbContext<ConsignmentContext>(options => options.UseNpgsql(ConnectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // var options = new DbContextOptionsBuilder<ConsignmentContext>();
+            //options.UseNpgsql(ConnectionString);
+            // var context = new ConsignmentContext(options.Options);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ConsignmentContext db)
         {
+
+            Console.WriteLine("Create Database");
+            db.Database.EnsureCreated();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
