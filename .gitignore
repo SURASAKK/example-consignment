@@ -199,7 +199,8 @@ UpgradeLog*.htm
 # SQL Server files
 *.mdf
 *.ldf
-
+vscode
+*vscode
 # Business Intelligence projects
 *.rdl.data
 *.bim.layout
