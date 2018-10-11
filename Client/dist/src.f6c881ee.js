@@ -69217,7 +69217,26 @@ exports.Switch = _Switch3.default;
 exports.generatePath = _generatePath3.default;
 exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
-},{"./BrowserRouter":101,"./HashRouter":102,"./Link":103,"./MemoryRouter":104,"./NavLink":105,"./Prompt":106,"./Redirect":107,"./Route":108,"./Router":109,"./StaticRouter":110,"./Switch":111,"./generatePath":112,"./matchPath":113,"./withRouter":114}],9:[function(require,module,exports) {
+},{"./BrowserRouter":101,"./HashRouter":102,"./Link":103,"./MemoryRouter":104,"./NavLink":105,"./Prompt":106,"./Redirect":107,"./Route":108,"./Router":109,"./StaticRouter":110,"./Switch":111,"./generatePath":112,"./matchPath":113,"./withRouter":114}],917:[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var AppStorage = /** @class */function () {
+    function AppStorage() {}
+    AppStorage.Logout = function () {
+        sessionStorage.removeItem(this.accessToken);
+    };
+    AppStorage.getAccessToken = function () {
+        return sessionStorage.getItem(this.accessToken);
+    };
+    AppStorage.setAccessToken = function (value) {
+        sessionStorage.setItem(this.accessToken, value);
+    };
+    AppStorage.accessToken = "accessToken";
+    return AppStorage;
+}();
+exports.default = AppStorage;
+},{}],9:[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -69243,21 +69262,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __importDefault(require("react"));
 var semantic_ui_react_1 = require("semantic-ui-react");
 var react_router_dom_1 = require("react-router-dom");
+var AppStorage_1 = __importDefault(require("../share/AppStorage"));
 var Header = /** @class */function (_super) {
     __extends(Header, _super);
     function Header(props) {
         var _this = _super.call(this, props) || this;
-        _this.onLogout = function () {};
+        _this.onLogout = function () {
+            _this.props.onLogout(false);
+            AppStorage_1.default.Logout();
+        };
         _this.state = {};
         return _this;
     }
     Header.prototype.render = function () {
-        return react_1.default.createElement("div", null, react_1.default.createElement(semantic_ui_react_1.Menu, { inverted: true, secondary: true, color: "blue", icon: "labeled" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { header: true, name: "\u0E23\u0E30\u0E1A\u0E1A\u0E1D\u0E32\u0E01\u0E02\u0E32\u0E22\u0E2A\u0E2B\u0E01\u0E32\u0E23" }), react_1.default.createElement(react_router_dom_1.Link, { to: "/" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E01\u0E32\u0E23\u0E2D\u0E19\u0E38\u0E21\u0E31\u0E15\u0E34\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(react_router_dom_1.Link, { to: "/product" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(react_router_dom_1.Link, { to: "/addnew" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(semantic_ui_react_1.Dropdown, { item: true, text: "\u0E2A\u0E23\u0E38\u0E1B\u0E22\u0E2D\u0E14" }, react_1.default.createElement(semantic_ui_react_1.Dropdown.Menu, null, react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E27\u0E31\u0E19"), react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E40\u0E14\u0E37\u0E2D\u0E19"), react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"))), react_1.default.createElement(semantic_ui_react_1.Menu.Item, { position: "right", name: "\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A" })));
+        return react_1.default.createElement("div", null, react_1.default.createElement(semantic_ui_react_1.Menu, { inverted: true, secondary: true, color: "blue", icon: "labeled" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { header: true, name: "\u0E23\u0E30\u0E1A\u0E1A\u0E1D\u0E32\u0E01\u0E02\u0E32\u0E22\u0E2A\u0E2B\u0E01\u0E32\u0E23" }), react_1.default.createElement(react_router_dom_1.Link, { to: "/" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E01\u0E32\u0E23\u0E2D\u0E19\u0E38\u0E21\u0E31\u0E15\u0E34\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(react_router_dom_1.Link, { to: "/product" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E23\u0E32\u0E22\u0E01\u0E32\u0E23\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(react_router_dom_1.Link, { to: "/addnew" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { name: "\u0E40\u0E1E\u0E34\u0E48\u0E21\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32", onClick: null })), react_1.default.createElement(semantic_ui_react_1.Dropdown, { item: true, text: "\u0E2A\u0E23\u0E38\u0E1B\u0E22\u0E2D\u0E14" }, react_1.default.createElement(semantic_ui_react_1.Dropdown.Menu, null, react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E27\u0E31\u0E19"), react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E40\u0E14\u0E37\u0E2D\u0E19"), react_1.default.createElement(semantic_ui_react_1.Dropdown.Item, null, "\u0E23\u0E32\u0E22\u0E2A\u0E34\u0E19\u0E04\u0E49\u0E32"))), react_1.default.createElement(semantic_ui_react_1.Menu.Item, { position: "right", name: "\u0E2D\u0E2D\u0E01\u0E08\u0E32\u0E01\u0E23\u0E30\u0E1A\u0E1A", onClick: this.onLogout })));
     };
     return Header;
 }(react_1.default.Component);
 exports.Header = Header;
-},{"react":11,"semantic-ui-react":120,"react-router-dom":14}],41:[function(require,module,exports) {
+},{"react":11,"semantic-ui-react":120,"react-router-dom":14,"../share/AppStorage":917}],41:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -75893,7 +75916,105 @@ var Body = /** @class */function (_super) {
 }(react_1.default.Component);
 exports.Body = Body;
 var templateObject_1;
-},{"react":11,"styled-components":119,"../css/Body.css":115,"react-router-dom":14,"./Permission":116,"./Product":117,"./Addnew":118}],13:[function(require,module,exports) {
+},{"react":11,"styled-components":119,"../css/Body.css":115,"react-router-dom":14,"./Permission":116,"./Product":117,"./Addnew":118}],916:[function(require,module,exports) {
+"use strict";
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+    } || function (d, b) {
+        for (var p in b) {
+            if (b.hasOwnProperty(p)) d[p] = b[p];
+        }
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var __importDefault = this && this.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var semantic_ui_react_1 = require("semantic-ui-react");
+var AppStorage_1 = __importDefault(require("../share/AppStorage"));
+var Login = /** @class */function (_super) {
+    __extends(Login, _super);
+    function Login(props) {
+        var _this = _super.call(this, props) || this;
+        _this.onLogout = function () {};
+        _this.handleUserChange = function (e) {
+            _this.setState({ InUser: e.target.value });
+        };
+        _this.handlePassChange = function (e) {
+            _this.setState({ InPass: e.target.value });
+        };
+        _this.onLogin = function () {
+            console.log("On");
+            if (_this.state.InUser === _this.state.User && _this.state.InPass === _this.state.Password) {
+                console.log("Login");
+                AppStorage_1.default.setAccessToken("OnLogIn");
+                _this.props.onLogin(true);
+            }
+        };
+        _this.state = {
+            User: "admin",
+            Password: "admin",
+            InUser: "",
+            InPass: ""
+        };
+        return _this;
+    }
+    Login.prototype.render = function () {
+        return react_1.default.createElement("div", { className: "login-form" }, react_1.default.createElement("style", null, "\n      body > div,\n      body > div > div,\n      body > div > div > div.login-form {\n        height: 100%;\n      }\n    "), react_1.default.createElement(semantic_ui_react_1.Grid, { textAlign: "center", style: { height: "100%" }, verticalAlign: "middle" }, react_1.default.createElement(semantic_ui_react_1.Grid.Column, { style: { maxWidth: 450 } }, react_1.default.createElement(semantic_ui_react_1.Header, { as: "h2", icon: true }, react_1.default.createElement(semantic_ui_react_1.Icon, { name: "shopping basket" }), "\u0E23\u0E30\u0E1A\u0E1A\u0E1D\u0E32\u0E01\u0E02\u0E32\u0E22\u0E2A\u0E2B\u0E01\u0E32\u0E23", react_1.default.createElement(semantic_ui_react_1.Header.Subheader, null, "\u0E23\u0E30\u0E1A\u0E1A\u0E17\u0E35\u0E48\u0E17\u0E33\u0E43\u0E2B\u0E49\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E1D\u0E32\u0E01\u0E02\u0E32\u0E22\u0E02\u0E2D\u0E07\u0E23\u0E49\u0E32\u0E19\u0E2A\u0E2B\u0E01\u0E32\u0E23\u0E20\u0E32\u0E22\u0E43\u0E19 5 \u0E19\u0E32\u0E17\u0E35!")), react_1.default.createElement(semantic_ui_react_1.Form, { size: "large" }, react_1.default.createElement(semantic_ui_react_1.Segment, { stacked: true, color: "green" }, react_1.default.createElement(semantic_ui_react_1.Form.Input, { fluid: true, icon: "user", iconPosition: "left", placeholder: "\u0E0A\u0E37\u0E48\u0E2D\u0E1C\u0E39\u0E49\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19", onChange: this.handleUserChange, autofocus: true }), react_1.default.createElement(semantic_ui_react_1.Form.Input, { fluid: true, icon: "lock", iconPosition: "left", placeholder: "\u0E23\u0E2B\u0E31\u0E2A\u0E1C\u0E48\u0E32\u0E19", type: "password", onChange: this.handlePassChange }), react_1.default.createElement(semantic_ui_react_1.Button, { color: "teal", fluid: true, size: "large", onClick: this.onLogin }, "\u0E40\u0E02\u0E49\u0E32\u0E2A\u0E39\u0E48\u0E23\u0E30\u0E1A\u0E1A"))), react_1.default.createElement(semantic_ui_react_1.Message, null, "\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E21\u0E35\u0E44\u0E2D\u0E14\u0E35\u0E1C\u0E39\u0E49\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19? ", react_1.default.createElement("a", { href: "#" }, "\u0E2A\u0E21\u0E31\u0E04\u0E23\u0E2A\u0E21\u0E32\u0E0A\u0E34\u0E01")))));
+    };
+    return Login;
+}(react_1.default.Component);
+exports.Login = Login;
+},{"react":11,"semantic-ui-react":120,"../share/AppStorage":917}],918:[function(require,module,exports) {
+"use strict";
+
+var __extends = this && this.__extends || function () {
+    var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+        d.__proto__ = b;
+    } || function (d, b) {
+        for (var p in b) {
+            if (b.hasOwnProperty(p)) d[p] = b[p];
+        }
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var __importDefault = this && this.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var react_1 = __importDefault(require("react"));
+var semantic_ui_react_1 = require("semantic-ui-react");
+var HeaderShow = /** @class */function (_super) {
+    __extends(HeaderShow, _super);
+    function HeaderShow(props) {
+        var _this = _super.call(this, props) || this;
+        _this.onLogout = function () {};
+        _this.state = {};
+        return _this;
+    }
+    HeaderShow.prototype.render = function () {
+        return react_1.default.createElement("div", null, react_1.default.createElement(semantic_ui_react_1.Menu, { inverted: true, secondary: true, color: "blue", icon: "labeled" }, react_1.default.createElement(semantic_ui_react_1.Menu.Item, { header: true, name: "\u0E23\u0E30\u0E1A\u0E1A\u0E1D\u0E32\u0E01\u0E02\u0E32\u0E22\u0E2A\u0E2B\u0E01\u0E32\u0E23" })));
+    };
+    return HeaderShow;
+}(react_1.default.Component);
+exports.HeaderShow = HeaderShow;
+},{"react":11,"semantic-ui-react":120}],13:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -75932,18 +76053,36 @@ var react_dom_1 = __importDefault(require("react-dom"));
 var Footer_1 = require("./components/Footer");
 var Header_1 = require("./components/Header");
 var Body_1 = require("./components/Body");
+var Login_1 = require("./components/Login");
+var HeaderShow_1 = require("./components/HeaderShow");
 require("semantic-ui-css/semantic.min.css");
 require("/css/style.css");
 var react_router_dom_1 = require("react-router-dom");
+var AppStorage_1 = __importDefault(require("./share/AppStorage"));
 var App = /** @class */function (_super) {
     __extends(App, _super);
     function App(props) {
         var _this = _super.call(this, props) || this;
-        _this.state = {};
+        _this.onLogout = function () {
+            _this.setState({ loggedIn: false });
+            AppStorage_1.default.Logout();
+        };
+        _this.onLogin = function (status) {
+            _this.setState({
+                loggedIn: status
+            });
+        };
+        _this.state = {
+            loggedIn: false
+        };
         return _this;
     }
+    App.prototype.componentDidMount = function () {
+        this.setState({ loggedIn: AppStorage_1.default.getAccessToken() !== null });
+    };
     App.prototype.render = function () {
-        return react_1.default.createElement("div", null, react_1.default.createElement(Header_1.Header, null), react_1.default.createElement(Body_1.Body, null), react_1.default.createElement(Footer_1.Footer, null));
+        var loggedIn = this.state.loggedIn;
+        return this.state.loggedIn ? react_1.default.createElement("div", null, react_1.default.createElement(Header_1.Header, { onLogout: this.onLogout }), react_1.default.createElement(Body_1.Body, null), react_1.default.createElement(Footer_1.Footer, null)) : react_1.default.createElement("div", null, react_1.default.createElement(HeaderShow_1.HeaderShow, null), react_1.default.createElement(Login_1.Login, { onLogin: this.onLogin }), react_1.default.createElement(Footer_1.Footer, null));
     };
     return App;
 }(react_1.default.Component);
@@ -75951,7 +76090,7 @@ exports.App = App;
 var root = document.getElementById("root");
 var app = react_1.default.createElement(react_router_dom_1.HashRouter, { history: react_router_dom_1.BrowserHistory }, react_1.default.createElement(App, null));
 react_dom_1.default.render(app, root);
-},{"react":11,"react-dom":12,"./components/Footer":8,"./components/Header":9,"./components/Body":10,"semantic-ui-css/semantic.min.css":13,"/css/style.css":7,"react-router-dom":14}],915:[function(require,module,exports) {
+},{"react":11,"react-dom":12,"./components/Footer":8,"./components/Header":9,"./components/Body":10,"./components/Login":916,"./components/HeaderShow":918,"semantic-ui-css/semantic.min.css":13,"/css/style.css":7,"react-router-dom":14,"./share/AppStorage":917}],915:[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 

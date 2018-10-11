@@ -1,10 +1,17 @@
 import React, { CSSProperties } from "react"
-import { Button, Form, Grid, Header, Image, Message, Segment } from "semantic-ui-react"
+import { Button, Form, Grid, Header, Icon, Message, Segment } from "semantic-ui-react"
 import { Link } from "react-router-dom";
+import AppStorage from "../share/AppStorage"
 
 type Props = {
+    // tslint:disable-next-line:variable-name
+    onLogin: (boolean) => void
 }
 type State = {
+    User: string,
+    Password: string,
+    InUser: string,
+    InPass: string
 }
 export class Login extends React.Component<Props, State> {
     public onLogout = () => {
@@ -13,7 +20,26 @@ export class Login extends React.Component<Props, State> {
         super(props);
 
         this.state = {
+            User: "admin",
+            Password: "admin",
+            InUser: "",
+            InPass: ""
         };
+    }
+    public handleUserChange = (e) => {
+        this.setState({ InUser: e.target.value })
+    }
+    public handlePassChange = (e) => {
+        this.setState({ InPass: e.target.value })
+    }
+    public onLogin = () => {
+        console.log("On")
+        if (this.state.InUser === this.state.User && this.state.InPass === this.state.Password) {
+            console.log("Login")
+
+            AppStorage.setAccessToken("OnLogIn")
+            this.props.onLogin(true)
+        }
     }
     public render() {
         return (
@@ -30,29 +56,32 @@ export class Login extends React.Component<Props, State> {
         height: 100%;
       }
     `}</style>
+
                 <Grid textAlign="center" style={{ height: "100%" }} verticalAlign="middle">
                     <Grid.Column style={{ maxWidth: 450 }}>
-                        <Header as="h2" color="teal" textAlign="center">
-                            <Image src="/logo.png" /> Log-in to your account
-        </Header>
+                        <Header as="h2" icon>
+                            <Icon name="shopping basket" />
+                            ระบบฝากขายสหการ
+    <Header.Subheader>ระบบที่ทำให้สามารถฝากขายของร้านสหการภายใน 5 นาที!</Header.Subheader>
+                        </Header>
                         <Form size="large">
-                            <Segment stacked>
-                                <Form.Input fluid icon="user" iconPosition="left" placeholder="E-mail address" />
+                            <Segment stacked color="green">
+                                <Form.Input fluid icon="user" iconPosition="left" placeholder="ชื่อผู้ใช้งาน" onChange={this.handleUserChange} autofocus />
                                 <Form.Input
                                     fluid
                                     icon="lock"
                                     iconPosition="left"
-                                    placeholder="Password"
+                                    placeholder="รหัสผ่าน"
                                     type="password"
+                                    onChange={this.handlePassChange}
                                 />
-
-                                <Button color="teal" fluid size="large">
-                                    Login
+                                <Button color="teal" fluid size="large" onClick={this.onLogin}>
+                                    เข้าสู่ระบบ
             </Button>
                             </Segment>
                         </Form>
                         <Message>
-                            New to us? <a href="#">Sign Up</a>
+                            ยังไม่มีไอดีผู้ใช้งาน? <a href="#">สมัครสมาชิก</a>
                         </Message>
                     </Grid.Column>
                 </Grid>

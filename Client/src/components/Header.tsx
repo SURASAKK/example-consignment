@@ -1,13 +1,18 @@
 import React, { CSSProperties } from "react"
 import { Menu, Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import AppStorage from "../share/AppStorage"
 
 type Props = {
+    // tslint:disable-next-line:variable-name
+    onLogout: (string) => void
 }
 type State = {
 }
 export class Header extends React.Component<Props, State> {
     public onLogout = () => {
+        this.props.onLogout(false)
+        AppStorage.Logout()
     }
     constructor(props) {
         super(props);
@@ -15,6 +20,7 @@ export class Header extends React.Component<Props, State> {
         this.state = {
         };
     }
+
     public render() {
         return (
             <div>
@@ -30,7 +36,7 @@ export class Header extends React.Component<Props, State> {
                             <Dropdown.Item>รายสินค้า</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Menu.Item position="right" name="ออกจากระบบ" />
+                    <Menu.Item position="right" name="ออกจากระบบ" onClick={this.onLogout} />
                 </Menu>
             </div>
         )
