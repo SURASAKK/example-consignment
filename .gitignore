@@ -122,6 +122,29 @@ AutoTest.Net/
 # Installshield output folder
 [Ee]xpress/
 
+.DS_Store
+
+node_modules
+dist
+.cache
+.sonarqube
+
+bin
+obj
+packages
+tools
+publish
+
+wwwroot
+.paket
+.settings
+.classpath
+.project
+
+target
+BenchmarkDotNet.Artifacts
+coverage.opencover.xml
+
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
 DocProject/Help/*.HxT
@@ -133,6 +156,9 @@ DocProject/Help/Html2
 DocProject/Help/html
 */.cache
 */.cache/
+*/dist/
+*/.node_modules/
+*/.DS_Store
 # Click-Once directory
 publish/
 .cache/
