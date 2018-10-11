@@ -131,10 +131,11 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
-
+*/.cache
+*/.cache/
 # Click-Once directory
 publish/
-
+.cache/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
