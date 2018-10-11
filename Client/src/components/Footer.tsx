@@ -17,7 +17,7 @@ export class Footer extends React.Component<{ style?: CSSProperties }> {
         return (
             <FooterDiv style={this.props.style}>
                 <Divider horizontal inverted>
-                    test 0.1.0
+                    ติดต่อเจ้าหน้าที่ 097-2455135
                 </Divider>
             </FooterDiv>
         )
