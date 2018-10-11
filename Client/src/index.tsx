@@ -6,6 +6,7 @@ import { Header } from "./components/Header"
 import { Body } from "./components/Body"
 import "semantic-ui-css/semantic.min.css"
 import "/css/style.css"
+import { HashRouter, BrowserHistory } from "react-router-dom"
 
 type State = {
 
@@ -30,4 +31,9 @@ export class App extends React.Component<{ style: CSSProperties }, State> {
 }
 
 let root = document.getElementById("root")
-ReactDOM.render(<App />, root)
+const app = (
+    <HashRouter history={BrowserHistory}>
+        <App />
+    </HashRouter>
+)
+ReactDOM.render(app, root)
