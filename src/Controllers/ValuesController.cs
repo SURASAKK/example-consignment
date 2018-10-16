@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Consignment.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Consignment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ValuesController : ControllerBase
     {
+        readonly ConsignmentContext db;
+
+
+
+        public ValuesController(ConsignmentContext db)
+        {
+            this.db = db;
+
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -37,9 +49,10 @@ namespace Consignment.Controllers
         }
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public async Task NukeDatabase()
         {
+            await db.Database.EnsureDeletedAsync();
         }
     }
 }
