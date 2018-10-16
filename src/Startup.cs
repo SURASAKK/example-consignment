@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Consignment.Models;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Consignment
 {
@@ -31,6 +32,10 @@ namespace Consignment
             services.AddDbContext<ConsignmentContext>(options => options.UseNpgsql(ConnectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
             // var options = new DbContextOptionsBuilder<ConsignmentContext>();
             //options.UseNpgsql(ConnectionString);
             // var context = new ConsignmentContext(options.Options);
@@ -54,6 +59,12 @@ namespace Consignment
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
         }
     }
 }
