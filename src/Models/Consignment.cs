@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Consignment.Models
 {
@@ -11,12 +12,17 @@ namespace Consignment.Models
             : base(options)
         { }
 
-        public DbSet<User_account> User_account { get; set; }
+        public DbSet<User_account> User_Accounts { get; set; }
+        public DbSet<User_admin> User_Admins { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Post_detail> Post_Details { get; set; }
+        public DbSet<Post_sell> Post_Sells { get; set; }
+        public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User_account>()
             .HasData(
-                new { Username = "admin", Password = "admin", Role = "" }
+                new { Id = 1, Username = "admin", Password = "admin" }
                 );
 
         }
@@ -25,14 +31,16 @@ namespace Consignment.Models
     public class User_account
     {
         [Key]
+        [JsonIgnore]
+        public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
 
     }
     public class User_admin
     {
         [Key]
+        [JsonIgnore]
         public int ID_admin { get; set; }
         public string Name_admin { get; set; }
         public string Gender { get; set; }
@@ -84,6 +92,7 @@ namespace Consignment.Models
 
     public class Product
     {
+        [Key]
         public int Product_ID { get; set; }
         public string Product_Name { get; set; }
         public DateTime Product_Date { get; set; } = DateTime.Now;
