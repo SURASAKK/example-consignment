@@ -15,8 +15,8 @@ namespace Consignment.Models
         public DbSet<User_account> User_Accounts { get; set; }
         public DbSet<User_admin> User_Admins { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Post_detail> Post_Details { get; set; }
-        public DbSet<Post_sell> Post_Sells { get; set; }
+        public DbSet<Sell_Detail> Post_Details { get; set; }
+        public DbSet<Sell_Data> Post_Sells { get; set; }
         public DbSet<Product> Products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,7 @@ namespace Consignment.Models
         public string Password { get; set; }
 
     }
+    // ตารางอนุมัติ
     public class User_admin
     {
         [Key]
@@ -54,7 +55,7 @@ namespace Consignment.Models
         public int Product_ID { get; set; }
 
     }
-
+    // ตารางสมาชิก
     public class User
     {
         [Key]
@@ -68,7 +69,8 @@ namespace Consignment.Models
 
     }
 
-    public class Post_detail
+    // รายละเอียดฝากขาย
+    public class Sell_Detail
     {
         [Key]
         public int PostDetail_ID { get; set; }
@@ -79,8 +81,8 @@ namespace Consignment.Models
         public int Product_ID { get; set; }
 
     }
-
-    public class Post_sell
+    // ตารางขาย
+    public class Sell_Data
     {
         [Key]
         public int PostSell_ID { get; set; }
@@ -89,7 +91,7 @@ namespace Consignment.Models
         public int PostDetail_ID { get; set; }
 
     }
-
+    // ตารางสินค้า
     public class Product
     {
         [Key]

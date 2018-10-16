@@ -78,7 +78,7 @@ export class Login extends React.Component<Props, State> {
                         </Header>
                         <Form size="large">
                             <Segment stacked color="green">
-                                <Form.Input fluid icon="user" iconPosition="left" placeholder="ชื่อผู้ใช้งาน" onChange={this.handleUserChange} autofocus />
+                                <Form.Input fluid icon="user" iconPosition="left" placeholder="ชื่อผู้ใช้งาน" onChange={this.handleUserChange} focus />
                                 <Form.Input
                                     fluid
                                     icon="lock"
