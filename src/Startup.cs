@@ -28,6 +28,7 @@ namespace Consignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             var ConnectionString = "Server=localhost;Port=5432;Database=Consignment;User Id=postgres;Password=admin1234;";
             services.AddDbContext<ConsignmentContext>(options => options.UseNpgsql(ConnectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
