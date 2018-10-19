@@ -22,6 +22,8 @@
         "parcel-bundler": "^1.9.7",
         "react": "^16.5.2",
         "react-dom": "^16.5.2",
+        "react-image-file": "^0.3.0",
+        "react-images-uploader": "^1.2.0-rc1",
         "react-monaco-editor": "^0.17.2",
         "semantic-ui-css": "^2.3.2",
         "semantic-ui-react": "^0.81.3",

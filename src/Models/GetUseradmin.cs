@@ -11,8 +11,7 @@ namespace Consignment.Models
         public string Tel { get; set; }
         public string Username { get; set; }
         public User ID_User { get; set; }
-        public Postdetail PostDetail_ID { get; set; }
-        public Postsell PostSell_ID { get; set; }
-        public Product Product_ID { get; set; }
+        public SellDetail PostDetail_ID { get; set; }
+        public SellData PostSell_ID { get; set; }
     }
 }

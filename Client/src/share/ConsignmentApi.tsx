@@ -20,7 +20,7 @@ type LoginResult = {
     Pass: string;
 }
 
-export class SearchApi {
+export class ConsignmentApi {
     constructor(private url: string) {
 
     }

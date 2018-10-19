@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Consignment.Models;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Consignment
 {
@@ -27,10 +28,14 @@ namespace Consignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var ConnectionString = "Server=192.168.0.105;Port=5432;Database=ConsignmntTest;User Id=tfo;Password=abcABC123;";
+            var ConnectionString = "Server=localhost;Port=5432;Database=Consignment;User Id=postgres;Password=admin1234;";
             services.AddDbContext<ConsignmentContext>(options => options.UseNpgsql(ConnectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
             // var options = new DbContextOptionsBuilder<ConsignmentContext>();
             //options.UseNpgsql(ConnectionString);
             // var context = new ConsignmentContext(options.Options);
@@ -54,6 +59,12 @@ namespace Consignment
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
         }
     }
 }

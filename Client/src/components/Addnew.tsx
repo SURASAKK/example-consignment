@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { getApiUrl } from "../share/Configuration";
 import { Segment, Checkbox, Form, Input, Button, Icon, Label } from "semantic-ui-react";
 import "../css/Body.css"
-import ImageUploader from "react-images-upload";
+import ImageUpload from "./ImageUpload";
 
 const ContainerDiv = styled.div`
     display: block;
@@ -15,6 +15,7 @@ type Props = {
 
 type State = {
     pictures: any[]
+    imagePreviewUrl: string
 }
 
 export class Addnew extends React.Component<Props, State> {
@@ -22,13 +23,16 @@ export class Addnew extends React.Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
-            pictures: []
+            pictures: [],
+            imagePreviewUrl: ""
         }
     }
-    private onDrop = (picture) => {
-        this.setState({
-            pictures: this.state.pictures.concat(picture),
-        });
+    private onDrop = (e) => {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        reader.onloadend = () => {
+        }
     }
 
     public render() {
@@ -59,13 +63,7 @@ export class Addnew extends React.Component<Props, State> {
                         </Form.Field>
                         <Form.Field>
                             <label>รูปภาพ</label><br />
-                            <ImageUploader
-                                withIcon={true}
-                                buttonText="Choose images"
-                                onChange={this.onDrop}
-                                imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                                maxFileSize={5242880}
-                            />
+                            <ImageUpload />
                         </Form.Field>
                         <Button color="green" floated="right" icon labelPosition="left" >
                             <Icon name="save" />
